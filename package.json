@@ -3,15 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "fantalytic": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Paul Mojica",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.3"
+    "chalk": "^4.1.0",
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@types/node-fetch": "^2.5.7",
     "minimist": "^1.2.5"
   }
 }
