@@ -1,13 +1,30 @@
-import { PositionTypes } from './parser.interface';
+import { IStatPosition, PositionTypes } from './parser.interface';
 
 export interface IQB {
-    position: PositionTypes
-    stats: QBStatTypes[]
+    position: PositionTypes;
+    stats: IQBStats;
 }
 
-export enum QBStatTypes {
-    PASSING_YDS =  'Passing Yds',
-    INT = 'INT',
-    TD = 'TD',
-    PASSING_PER_ATT = 'Passing Per Attempt'
+export interface IQBStats {
+    url: string;
+    player: {
+        statSelector: IStatPosition;
+        value?: string;
+    };
+    passingYds: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    ints: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    tds: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    passingYdsPerAttempt: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
 }
