@@ -1,14 +1,9 @@
-import { RootCommandTypes } from "../models/parser.interface";
+import { PositionTypes, RootCommandTypes } from "../models/parser.interface";
 
 const chalk = require('chalk');
 
 export class CommandParser {
     constructor() { }
-
-    async parseCommand(type: RootCommandTypes): Promise<void> {
-        console.log(chalk.green(`${type}`));
-        return Promise.resolve();
-    }
 
     getCommandType(type: string): RootCommandTypes {
         switch (type.toLowerCase()) {
@@ -17,6 +12,15 @@ export class CommandParser {
             default:
                 return RootCommandTypes.UNKNOWN;
                 
+        }
+    }
+
+    getCommandPostion(type: string): PositionTypes {
+        switch (type.toLowerCase()) {
+            case 'qb':
+                return PositionTypes.QB;
+            default:
+                return PositionTypes.UNKNOWN;
         }
     }
 }
