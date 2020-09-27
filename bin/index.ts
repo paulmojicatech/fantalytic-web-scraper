@@ -12,9 +12,14 @@ const args = minimist(process.argv);
 const { _ } = args;
 const cmdType = cmdParser.getCommandType(_[2]);
 const position = cmdParser.getCommandPostion(_[3]);
-const siteContentPromise = getSiteContent(position);
-siteContentPromise
-    .then(() => {
-        console.log(chalk.green('Command was successfully proecessed.'));
-    })
-    .catch(err => console.log(chalk.red(`Error occurred:${err}`)));
+if (!!cmdType && !!position) {
+    const siteContentPromise = getSiteContent(cmdType, position);
+    siteContentPromise
+        .then(() => {
+            console.log(chalk.green('Command was successfully proecessed.'));
+        })
+        .catch(err => console.log(chalk.red(`Error occurred:${err}`)));
+    
+} else {
+    console.log(chalk.red('Error parsing command.'));
+}

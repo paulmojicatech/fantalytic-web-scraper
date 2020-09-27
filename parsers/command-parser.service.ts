@@ -5,22 +5,29 @@ const chalk = require('chalk');
 export class CommandParser {
     constructor() { }
 
-    getCommandType(type: string): RootCommandTypes {
-        switch (type.toLowerCase()) {
-            case 'get':
-                return RootCommandTypes.GET
-            default:
-                return RootCommandTypes.UNKNOWN;
-                
-        }
+    getCommandType(type: string): RootCommandTypes | null {
+        if (!!type) {
+            switch (type.toLowerCase()) {
+                case 'get':
+                    return RootCommandTypes.GET
+                default:
+                    return RootCommandTypes.UNKNOWN;
+                    
+            }
+        } 
+        return null;
     }
 
-    getCommandPostion(type: string): PositionTypes {
-        switch (type.toLowerCase()) {
-            case 'qb':
-                return PositionTypes.QB;
-            default:
-                return PositionTypes.UNKNOWN;
+    getCommandPostion(type: string): PositionTypes | null {
+        if (!!type) {
+            switch (type.toLowerCase()) {
+                case 'qb':
+                    return PositionTypes.QB;
+                default:
+                    return PositionTypes.UNKNOWN;
+            }
         }
+        return null;
     }
+    
 }
