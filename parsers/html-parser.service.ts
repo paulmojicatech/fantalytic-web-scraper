@@ -1,9 +1,5 @@
-import chalk from "chalk";
-import { QB_STATS } from "../models/defaults/qb.const";
-import { IStatPosition, PositionTypes } from "../models/parser.interface";
-import { IQBStats } from "../models/qb.interface";
+import { PositionTypes } from "../models/parser.interface";
 import { writeFile } from 'fs';
-import { normalize } from 'path';
 import { parseQBResponse } from "./qb-parser.service";
 
 const cheerio = require('cheerio');

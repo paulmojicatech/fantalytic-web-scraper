@@ -4,7 +4,6 @@ import { parserHtmlString } from '../parsers/html-parser.service';
 
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
-const chalk = require('chalk');
 
 export async function getSiteContent(cmdType: RootCommandTypes, position: PositionTypes): Promise<void> {
     if (cmdType === RootCommandTypes.GET) {
@@ -13,6 +12,5 @@ export async function getSiteContent(cmdType: RootCommandTypes, position: Positi
         await parserHtmlString(response, position);
         return Promise.resolve();
     }
-    console.log(chalk.red('Error processing command.'));
     return Promise.resolve();
 }

@@ -1,7 +1,5 @@
 import { PositionTypes, RootCommandTypes } from "../models/parser.interface";
 
-const chalk = require('chalk');
-
 export class CommandParser {
     constructor() { }
 

@@ -20,6 +20,4 @@ if (!!cmdType && !!position) {
         })
         .catch(err => console.log(chalk.red(`Error occurred:${err}`)));
     
-} else {
-    console.log(chalk.red('Error parsing command.'));
 }
