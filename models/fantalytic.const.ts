@@ -1,0 +1,1 @@
+export const NFL_DEFAULT_FOOTBALL_PLAYER_STATS = 'https://nfl.com/stats/player-stats';

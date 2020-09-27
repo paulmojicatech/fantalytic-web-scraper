@@ -1,7 +1,8 @@
 import * as stats from './index';
 
 export enum PositionTypes {
-    QB = 'QB'
+    QB = 'QB',
+    UNKNOWN = 'UNKNOWN'
 }
 
 export interface ICommandOptions {
