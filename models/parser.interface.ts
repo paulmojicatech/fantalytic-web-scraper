@@ -13,8 +13,14 @@ export interface ICommandOptions {
     }
 }
 
+export enum CommandTypes {
+    ROOT = 'root'
+}
+
 export enum RootCommandTypes {
     GET = 'get',
+    CHECK = 'check',
+    UPLOAD = 'upload',
     UNKNOWN = 'unknown'
 }
 
