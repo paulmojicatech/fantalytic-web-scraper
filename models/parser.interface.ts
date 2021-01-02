@@ -5,8 +5,15 @@ export enum PositionTypes {
     UNKNOWN = 'UNKNOWN'
 }
 
+export enum GetLocationType {
+    HTTP = 'HTTP',
+    MONGO = 'MONGO',
+    FILE = 'FILE'
+}
+
 export interface ICommandOptions {
     get: {
+        location: GetLocationType,
         pos: PositionTypes,
         year: string,
         stat: stats.PostionStat

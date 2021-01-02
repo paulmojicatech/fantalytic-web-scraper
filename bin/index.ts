@@ -5,8 +5,11 @@ import { CommandParser } from "../parsers/command-parser.service";
 import { logSuccess } from "../messaging/success.service";
 import { logError } from "../messaging/error.service";
 import { logHelp } from "../parsers/help.parser";
+import { PositionTypes, RootCommandTypes } from "../models/parser.interface";
+import { MongoDbAdapter } from "../data-persistence-adapters/mongo-adapter";
 
 const minimist = require("minimist");
+require('dotenv').config();
 
 const cmdParser = new CommandParser();
 
@@ -19,14 +22,34 @@ if (isHelpRequest || _.length === 2) {
   logHelp(_);
 } else {
   const cmdType = cmdParser.getCommandType(_[2]);
-  const position = cmdParser.getCommandPostion(_[3]);
+  const position = (<string[]>_).find(cmd => cmd === '--help') as PositionTypes ?? null;
   if (!!cmdType && !!position) {
-    const siteContentPromise = getSiteContent(cmdType, position);
-    siteContentPromise
-      .then(() => {
-        logSuccess("Command executed");
-      })
-      .catch((err) => logError(`Error occurred:${err}`));
+    switch (cmdType) {
+      case RootCommandTypes.GET:
+        const siteContentPromise = getSiteContent(position);
+        siteContentPromise
+          .then(() => {
+            logSuccess("Command executed");
+          })
+          .catch((err) => logError(`Error occurred:${err}`));
+        break;
+      case RootCommandTypes.UPLOAD:
+        try {
+          console.log('UPLOAD');
+          const mongoSvc = new MongoDbAdapter();
+          mongoSvc.getCollection(`${position}`).then((items) => {
+            logSuccess(`${JSON.stringify(items)} `);
+          }).catch(err => {
+            throw err;
+          });
+        } catch (ex: any) {
+          logError(`UPLOAD COMMAND FAILED: ${ex}`);
+        } finally {
+          break;
+        }
+      default:
+        break;
+    }
   } else {
     logError("Unknown command");
   }

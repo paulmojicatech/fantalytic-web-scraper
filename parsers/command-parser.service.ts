@@ -7,7 +7,9 @@ export class CommandParser {
         if (!!type) {
             switch (type.toLowerCase()) {
                 case 'get':
-                    return RootCommandTypes.GET
+                    return RootCommandTypes.GET;
+                case 'upload':
+                    return RootCommandTypes.UPLOAD;
                 default:
                     return RootCommandTypes.UNKNOWN;
                     

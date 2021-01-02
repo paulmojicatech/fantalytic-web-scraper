@@ -1,4 +1,9 @@
+# compiled output
 **/*.js
 
+# dependencies
 node_modules
 output
+
+# local settings
+env.ts
