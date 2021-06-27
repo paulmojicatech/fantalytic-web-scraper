@@ -8,8 +8,7 @@ export async function parserHtmlString(html: any, type: PositionTypes, url: stri
     
     const $ = cheerio.load(html);
     const table = $('.d3-o-table--detailed');
-    
-    switch (type) {
+    switch (type.toUpperCase()) {
         case PositionTypes.QB:
             const qbStats = await parseQBResponse(table, url);
             const outputPath = `${__dirname}/../output/qb.json`;

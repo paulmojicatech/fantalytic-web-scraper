@@ -5,16 +5,28 @@ export enum PositionTypes {
     UNKNOWN = 'UNKNOWN'
 }
 
-export interface ICommandOptions {
-    get: {
-        pos: PositionTypes,
-        year: string,
-        stat: stats.PostionStat
-    }
+export enum GetLocationType {
+    HTTP = 'HTTP',
+    MONGO = 'MONGO',
+    FILE = 'FILE'
+}
+
+export interface IFantalyticGetCommand {
+    type: RootCommandTypes,
+    pos: PositionTypes,
+    location?: GetLocationType,
+    year?: string,
+    stat?: stats.PostionStat
+}
+
+export enum CommandTypes {
+    ROOT = 'root'
 }
 
 export enum RootCommandTypes {
     GET = 'get',
+    CHECK = 'check',
+    UPLOAD = 'upload',
     UNKNOWN = 'unknown'
 }
 
