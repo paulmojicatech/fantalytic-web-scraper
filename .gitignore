@@ -7,3 +7,4 @@ output
 
 # local settings
 env.ts
+.DS_Store

@@ -21,10 +21,10 @@ const isHelpRequest =
 if (isHelpRequest || _.length === 2) {
   logHelp(_);
 } else {
-  const cmdType = cmdParser.getCommandType(_[2]);
-  const position = (<string[]>_).find(cmd => cmd === '--help') as PositionTypes ?? null;
-  if (!!cmdType && !!position) {
-    switch (cmdType) {
+  const cmd = cmdParser.getCommand(_);
+  const position = cmd?.pos as PositionTypes ?? null;
+  if (!!cmd && !!position) {
+    switch (cmd.type) {
       case RootCommandTypes.GET:
         const siteContentPromise = getSiteContent(position);
         siteContentPromise
@@ -35,7 +35,6 @@ if (isHelpRequest || _.length === 2) {
         break;
       case RootCommandTypes.UPLOAD:
         try {
-          console.log('UPLOAD');
           const mongoSvc = new MongoDbAdapter();
           mongoSvc.getCollection(`${position}`).then((items) => {
             logSuccess(`${JSON.stringify(items)} `);

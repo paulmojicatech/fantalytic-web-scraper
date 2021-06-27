@@ -11,13 +11,12 @@ export enum GetLocationType {
     FILE = 'FILE'
 }
 
-export interface ICommandOptions {
-    get: {
-        location: GetLocationType,
-        pos: PositionTypes,
-        year: string,
-        stat: stats.PostionStat
-    }
+export interface IFantalyticGetCommand {
+    type: RootCommandTypes,
+    pos: PositionTypes,
+    location?: GetLocationType,
+    year?: string,
+    stat?: stats.PostionStat
 }
 
 export enum CommandTypes {
