@@ -14,8 +14,8 @@ export enum GetLocationType {
 export interface IFantalyticGetCommand {
     type: RootCommandTypes,
     pos: PositionTypes,
+    year: string,
     location?: GetLocationType,
-    year?: string,
     stat?: stats.PostionStat
 }
 

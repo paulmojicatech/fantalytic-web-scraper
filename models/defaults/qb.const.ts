@@ -1,7 +1,7 @@
 import { IQBStats } from "../qb.interface";
 
 export const QB_STATS: IQBStats = {
-    url: 'https://nfl.com/stats/player-stats',
+    url: 'https://www.nfl.com/stats/player-stats/category/passing/{year}/REG/all/passingyards/DESC',
     player: {
         statSelector: {
             statColIndex: 0,

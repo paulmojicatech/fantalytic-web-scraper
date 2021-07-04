@@ -17,16 +17,22 @@ const args = minimist(process.argv);
 const { _ } = args;
 
 const isHelpRequest =
-  (<string[]>_).findIndex((cmd) => cmd.toLowerCase() === "--help") > -1;
+  (<string[]>_).findIndex((cmd) => `${cmd}`.toLowerCase() === "--help") > -1;
 if (isHelpRequest || _.length === 2) {
   logHelp(_);
 } else {
-  const cmd = cmdParser.getCommand(_);
+  let cmd = null;
+  try {
+    cmd = cmdParser.getCommand(_);
+    console.log('cmd', cmd);
+  } catch (exception) {
+    logError(`${exception}`);
+  }
   const position = cmd?.pos as PositionTypes ?? null;
   if (!!cmd && !!position) {
     switch (cmd.type) {
       case RootCommandTypes.GET:
-        const siteContentPromise = getSiteContent(position);
+        const siteContentPromise = getSiteContent(position, cmd.year);
         siteContentPromise
           .then(() => {
             logSuccess("Command executed");
