@@ -3,6 +3,18 @@
 ## Purpose
 This is a CLI tool to scrape websites for NFL player stats.
 
+## Installation
+To install the tool, follow the steps below:
+
+ - Create a directory to store the application
+ - Navigate to the directory and type `git init`
+ - Run commands below:
+	 -  `git remote add origin https://github.com/paulmojicatech/fantalytic-web-scraper`
+	 - `git pull origin master`
+	 - `npm install`
+	 - `npm run link`
+		 - This needs to be run with sudo access
+
 ## Commands
 Command syntax:
 

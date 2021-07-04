@@ -7,13 +7,15 @@
     "fantalytic": "./bin/index.js"
   },
   "scripts": {
+    "build": "tsc",
+    "link": "tsc && npm link",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Paul Mojica",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",
-    "cheerio": "^1.0.0-rc.3",
+    "cheerio": "^1.0.0-rc.10",
     "dotenv": "^8.2.0",
     "mongodb": "^3.6.3",
     "node-fetch": "^2.6.1"
