@@ -24,7 +24,6 @@ if (isHelpRequest || _.length === 2) {
   let cmd = null;
   try {
     cmd = cmdParser.getCommand(_);
-    console.log('cmd', cmd);
   } catch (exception) {
     logError(`${exception}`);
   }

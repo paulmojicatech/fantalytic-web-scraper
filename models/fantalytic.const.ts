@@ -1,1 +1,1 @@
-export const NFL_DEFAULT_FOOTBALL_PLAYER_STATS = 'https://nfl.com/stats/player-stats';
+export const NFL_DEFAULT_FOOTBALL_PLAYER_STATS = 'https://www.nfl.com/stats/player-stats/category/passing/<%year%>/REG/all/passingyards/DESC';

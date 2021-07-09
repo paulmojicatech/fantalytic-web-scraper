@@ -10,7 +10,6 @@ export class CommandParser {
             switch (type.toLowerCase()) {
                 case RootCommandTypes.GET:
                     let command = this.parseOptions(type, args) as IFantalyticGetCommand;
-                    console.log('command', command);
                     if (!command.year) {
                         throw('A year must be specified');
                     }
@@ -45,7 +44,6 @@ export class CommandParser {
         switch (cmdType) {
             case RootCommandTypes.GET:
                 let getCommand: any = {};
-                console.log('opts', options);
                 options.forEach((opt, index) => {
                     switch (opt) {
                         case 'location':
