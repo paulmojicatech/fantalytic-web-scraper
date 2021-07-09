@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "link": "tsc && npm link",
+    "link": "tsc && npm link fantalytic-web-scraper",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Paul Mojica",
