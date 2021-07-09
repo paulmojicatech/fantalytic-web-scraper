@@ -20,5 +20,14 @@ Command syntax:
 
     fantalytic <%commandType%> <%playerPosition%> year <%yearToFetch%> location <%locationToStoreData%>
 
+## Command Types
 
-
+ - `get`
+	 - **Required**
+	 - Valid values (<%playerPosition%>):
+		 - `QB`
+ - `upload`
+	 - Optional
+	 - Valid values (<%locationToStoreData%>):
+		 - `FILE` (**Default**)
+			 - This will put the fetched value in JSON format to 
