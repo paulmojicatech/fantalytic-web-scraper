@@ -1,18 +1,21 @@
 import { PositionTypes } from "../models/parser.interface";
-import { writeFile } from 'fs';
+import { writeFileSync } from 'fs';
 import { parseQBResponse } from "./qb-parser.service";
+import { logError } from "../messaging/error.service";
 
 const cheerio = require('cheerio');
 
 export async function parserHtmlString(html: any, type: PositionTypes, year: string, url: string = ''): Promise<any> {
     
-    const $ = cheerio.load(html);
-    const table = $('.d3-o-table--detailed');
     switch (type.toUpperCase()) {
         case PositionTypes.QB:
-            const qbStats = await parseQBResponse(table, url);
-            const outputPath = `${__dirname}/../output/${year}/qb.json`;
-            await writeFile(outputPath, JSON.stringify(qbStats), () => {});
+            const qbStats = await parseQBResponse(html, url);
+            const outputPath = `${__dirname}/../output/${year}_qb.json`;
+            try {
+                await writeFileSync(outputPath, JSON.stringify(qbStats));
+            } catch (ex) {
+                logError(`${ex}`);
+            }
             break;
         default:
             break;
