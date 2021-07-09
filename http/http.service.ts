@@ -1,5 +1,5 @@
 import { NFL_DEFAULT_FOOTBALL_PLAYER_STATS } from '../models/fantalytic.const';
-import { PositionTypes, RootCommandTypes } from '../models/parser.interface';
+import { PositionTypes } from '../models/parser.interface';
 import { parserHtmlString } from '../parsers/html-parser.service';
 
 const fetch = require('node-fetch');
